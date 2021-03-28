@@ -19,6 +19,8 @@ npm install antd --save
 
 
 # 配置
+
+
 ``` typings.json
 {
   "globalDependencies": {

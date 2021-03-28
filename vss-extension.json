@@ -1,12 +1,12 @@
 {
     "manifestVersion": 1.0,
-    "id": "vsts-extensions-multivalue-control",
-    "version": "2.2.26",
-    "name": "Multivalue control",
-    "description": "A work item form control which allows selection of multiple values.",
-    "publisher": "ms-devlabs",
+    "id": "jason-workitem-custom-control",
+    "version": "2.2.32",
+    "name": "Azure Dveops 自定义控件",
+    "description": "一个工作项的自定义控件示例",
+    "publisher": "jaosn-chen",
     "icons": {
-        "default": "img/logo.png"
+        "default": "img/favicon-leansoftx.ico"
     },
     "categories": [
         "Plan and track"

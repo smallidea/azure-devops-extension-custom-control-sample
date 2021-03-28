@@ -351,3 +351,5 @@ MigrationBackup/
 package-lock.json
 typings/
 dist/
+build/
+**/*.vsix
