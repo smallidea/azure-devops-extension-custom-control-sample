@@ -6,12 +6,12 @@
   "scripts": {
     "postinstall": "typings install",
 
-    "clean": "rimraf dist *.vsix",
+    "clean": "rimraf **/dist **/*.vsix **/build",
     "dev": "webpack-dev-server --hot --progress --colors --content-base ./src --https --port 8888",
     "dev:http": "webpack-dev-server --hot --progress --colors --content-base ./src --http --port 8888",
-    
-    "package:dev": "node ./scripts/packageDev",
-    "package:dev:http": "node ./scripts/packageDevHttp",
+
+    "package:dev": "npm run clean && tsc && node ./scripts/packageDev",
+    "package:dev:http": "npm run clean && tsc && node ./scripts/packageDevHttp",
     "package:release": "node ./scripts/packageRelease",
     "package:beta": "node ./scripts/packageBeta",
     "publish:dev": "npm run package:dev && node ./scripts/publishDev",

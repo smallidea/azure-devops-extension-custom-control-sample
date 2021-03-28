@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1.0,
     "id": "jason-workitem-custom-control",
-    "version": "2.2.32",
+    "version": "2.2.34",
     "name": "Azure Dveops 自定义控件",
     "description": "一个工作项的自定义控件示例",
     "publisher": "jaosn-chen",

@@ -20,7 +20,6 @@ npm install antd --save
 
 # 配置
 
-
 ``` typings.json
 {
   "globalDependencies": {
@@ -46,6 +45,24 @@ typings/
 dist/
 ```
 
+# 目录结构
+``` tree
+│  .gitignore
+│  package.json
+│  README.md
+│  tsconfig.json
+│  typings.json
+│  vss-extension.json
+├─configs
+├─img
+├─scripts
+└─src
+    └─customControl
+            customControl.tsx
+            index.html
+            index.tsx
+
+```
 
 
 # 参考文档
