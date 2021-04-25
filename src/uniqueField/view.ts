@@ -1,4 +1,3 @@
-// import { Markdown } from './markdown';
 import { WorkItemFormService } from "TFS/WorkItemTracking/Services";
 import { Model } from "./model";
 import { WorkItemField } from 'TFS/WorkItemTracking/Contracts';

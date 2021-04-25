@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "ES6",
-        //"rootDir": "src/",
+        "rootDir": "../../src/",
         "outDir": "../../dist/",
         //"removeComments": true,
         "sourceMap": true,
@@ -13,7 +13,7 @@
         ]
     },
     "include": [
-        "../../src/uniqueField/*",
-        "../../common/*"
+        "./*",
+        "../common/*"
     ]
 }

@@ -43,7 +43,7 @@ export class Controller {
                         this._workItemType = workItemType;
                         this._workItemId = workItemId;
 
-                        //Force update markdown after view is created.
+                        //Force update  view is created.
                         this._view.update(currentValue);
 
                     }, this._handleError

@@ -62,7 +62,3 @@ input, select, textarea, button {
 .combo.focus:not(.readonly) {
     border-color: var(--communication-background,rgba(0, 120, 212, 1)) !important;
 }
-
-.markdown-control {
-    width: auto;
-}
