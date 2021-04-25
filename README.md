@@ -68,7 +68,7 @@ cd azure-devops-extension-custom-control-sample
 └── vss-extension-uniqueField.json          插件的配置文件
 
 ```
-> 在bash下面使用tree命令获取目录海不错： tree -L 3 -I '*node_module*|out|dist|package-lock.json|*.png|*.css|license'
+> 在bash下面使用tree命令获取目录还不错： tree -L 3 -I '*node_module*|out|dist|package-lock.json|*.png|*.css|license'
 
 ## 四. 使用`vss-web-extension-sdk`
 使用 [vss-web-extension-sdk](https://github.com/microsoft/vss-web-extension-sdk)Microsoft VSS Web 扩展 SDK 包，英文全称 Visual Studio Services Web Extension SDK
