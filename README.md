@@ -52,7 +52,7 @@ import * as Q from "q";
 | WitService         | getService()                | 返回一个服务器实例                    |
 |                    | getFieldValue()             | 获取当前工作项字段的值值                                    |
 |                    | setFieldValue()             | 设置当前工作项字段的值       |
-|                    | getAllowedFieldValues()     | 获取字段的洋允许的值，即在配工作项模版配置时的下拉框中的选项列表                                    |
+|                    | getAllowedFieldValues()     | 获取字段的允许的值，即在配工作项模版配置时的下拉框中的选项列表                                    |
 
 
 ### 2. 核心代码

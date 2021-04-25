@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "target": "ES6",
-        "rootDir": "../../src/",
-        "outDir": "../../dist/",
+        "rootDir": "src/",
+        "outDir": "dist/",
         //"removeComments": true,
         "sourceMap": true,
         "module": "amd",
