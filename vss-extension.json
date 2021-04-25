@@ -1,0 +1,108 @@
+{
+    "manifestVersion": 1,
+    "id": "devops-markdown-text-control",
+    "publisher": "Ricardo-Zambon",
+    "version": "1.0.26",
+    "name": "Markdown Text Control",
+    "description": "Extension to show text field control and markdown in same row",
+    "public": true,
+    "categories": [
+        "Azure Boards"
+    ],
+    "scopes": [
+        "vso.work",
+        "vso.work_write"
+    ],
+    "icons": {
+        "default": "static/images/MarketplaceLogo.jpg"
+    },
+    "links": {
+        "learn": {
+            "uri": "https://github.com/RicardoZambon/devops-markdown-text-control/blob/master/README.md"
+        },
+        "support": {
+            "uri": "https://github.com/RicardoZambon/devops-markdown-text-control"
+        },
+        "repository": {
+            "uri": "https://github.com/RicardoZambon/devops-markdown-text-control"
+        },
+        "issues": {
+            "uri": "https://github.com/RicardoZambon/devops-markdown-text-control/issues"
+        }
+    },
+    "targets": [
+        {
+            "id": "Microsoft.TeamFoundation.Server"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "details.md"
+        }
+    },
+    "tags": [
+        "Work Item",
+        "Work Item control",
+        "Work Item form",
+        "Work item form custom control",
+        "Work item field"
+    ],
+    "contributions": [
+        {
+            "id": "markdown-form-control",
+            "type": "ms.vss-work-web.work-item-form-control",
+            "description": "A markdown text control for work item form.",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "name": "Markdown Text Control",
+                "uri": "static/index.html",
+                "height": 50,
+                "inputs": [
+                    {
+                        "id": "FieldName",
+                        "name": "Field",
+                        "type": "WorkItemField",
+                        "properties": {
+                            "workItemFieldTypes": [
+                                "String"
+                            ]
+                        },
+                        "validation": {
+                            "dataType": "String",
+                            "isRequired": true
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "dist",
+            "addressable": true
+        },
+        {
+            "path": "static",
+            "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        },
+        {
+            "path": "node_modules/azure-devops-extension-sdk/SDK.js",
+            "addressable": true
+        },
+        {
+            "path": "node_modules/azure-devops-extension-api",
+            "addressable": true
+        },
+        {
+            "path": "src",
+            "addressable": true
+        }
+    ]
+}

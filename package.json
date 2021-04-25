@@ -1,0 +1,30 @@
+{
+  "name": "devops-markdown-text-control",
+  "version": "0.0.0-development",
+  "author": "Ricardo Zambon",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf ./dist ./out *.vsix",
+    "package": "npm run build && tfx extension create --rev-version --output-path ./out",
+    "publish": "npm run build && tfx extension publish --rev-version --manifest-globs vss-extension.json --output-path out --service-url https://tfs.devopshub.cn/ --token "
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RicardoZambon/devops-markdown-text-control.git"
+  },
+  "dependencies": {
+    "@types/jquery": "^3.5.0",
+    "@types/q": "^1.5.4",
+    "markdown-it": "^11.0.0",
+    "vss-web-extension-sdk": "^5.141.0",
+    "azure-devops-extension-api": "latest",
+    "azure-devops-extension-sdk": "latest"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.7",
+    "rimraf": "~2.6.2"
+  },
+  "release": {
+    "plugins": []
+  }
+}
