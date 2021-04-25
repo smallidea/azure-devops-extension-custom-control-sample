@@ -1,45 +1,44 @@
-[![GitHub last commit](https://img.shields.io/github/last-commit/ricardozambon/devops-markdown-text-control?logo=github&logoColor=white)](https://github.com/RicardoZambon/devops-markdown-text-control) [![Semantic-Release](https://github.com/RicardoZambon/devops-markdown-text-control/workflows/Semantic-Release/badge.svg)](https://github.com/RicardoZambon/devops-markdown-text-control/actions?query=workflow%3ASemantic-Release) [![GitHub release (latest by date)](https://img.shields.io/github/v/release/ricardozambon/devops-markdown-text-control?logo=github&logoColor=white)](https://github.com/RicardoZambon/devops-markdown-text-control/releases) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![Visual Studio Marketplace](https://img.shields.io/badge/Visual%20Studio%20Marketplace-purple?logo=visual-studio&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=Ricardo-Zambon.devops-markdown-text-control)
+[![GitHub last commit](https://img.shields.io/github/last-commit/smallidea/azure-devops-extension-custom-control-sample?logo=github&logoColor=white)](https://github.com/smallidea/azure-devops-extension-custom-control-sample) 
 
-# Azure DevOps Extension: Markdown Text Control
+# Azure DevOps 插件: Field Unique Control
 
-Azure DevOps extension to show text field control and markdown in same row.
+[[_TOC_]]
 
-[Learn how to build your own custom control for the work item form.](https://www.visualstudio.com/en-us/docs/integrate/extensions/develop/custom-control)
+## 一. 概述
+ 验证字段值的唯一性，如果相同类型的工作项使用了该值，将报错，当前工作项不能保存。
 
-[More info about developing your own custom web extensions for Azure DevOps Services](https://docs.microsoft.com/en-us/azure/devops/extend/get-started/node?view=azure-devops)
+ - [如何开发自定义控件](https://www.visualstudio.com/en-us/docs/integrate/extensions/develop/custom-control)
 
-<img src="./static/images/Example.png" style="border: 1px solid black;" /> 
+ - [如果使用web技术开发一个插件](https://docs.microsoft.com/en-us/azure/devops/extend/get-started/node?view=azure-devops)
 
-### Usage ###
+<img src='images/field_unique_1.png' />
 
-1. Clone the repository.
-2. Open the Command Prompt and change to the directory where you cloned the project.  For instance, if it is cloned in a folder called "extensions" and saved as "vsts-sample-wit-custom-control", you will navigate to the following command line.
+## 二. 快速开始 
 
-    > cd C:\extensions\vsts-sample-wit-custom-control
+1. 克隆git库，并进入目录
+
+``` shell / cmd / bash
+git clone https://github.com/smallidea/azure-devops-extension-custom-control-sample.git
+
+cd azure-devops-extension-custom-control-sample
+```
         
-3. Run `npm install` to install required local dependencies.
-4. Run `npm run publish`.
-5. In your browser, navigate to your local instance of TFS, `http://YourTFSInstance:8080/tfs`.
-6. Go to your personal Marketplace.
-7. Click the Marketplace icon in the upper righthand corner.
-8. Click "Browse local extensions" in the dropdown.
-9. Scroll down and click on the "Manage Extensions" widget.
-10. Click the button "Upload new extension".
-11. Browse to the *.vsix* file generated when you packaged your extension.
-12. Select the extension, and then click "Open".  Click "Upload" when the button activates.
-13. Hover over the extension when it appears in the list, and click "Install".
+3. 运行 `npm install` 安装项目所需要的npm包
+4. 运行 `npm run publish`，里面的tfs地址和token需要根据具体项目进行修改
+5. 在浏览器中访问你的tfs站点, `http://YourTFSInstance:8080/tfs`.
+> 建议使用chrome 70版本以上
+6. 手动安装并启用插件
+   - 集合设置 > 扩展 > 浏览本地插件 > 管理本地扩展 > 上传扩展 > 浏览本地文件上传插件
+   - 点击进入插件详情 > 免费获取 > 选择集合，点击启用
+7. 手动更新插件
+   - 集合设置 > 扩展 > 浏览本地插件 > 管理本地扩展
+   - 找到需要更新的插件，点击名称后的三个点 > 选择更新 > 浏览本地文件上传插件
 
-You have now installed the extension inside your collection.  You are now able to put the control on the work item form.
+## 三. 
+## 使用 vss-web-extension-sdk 进行开发
 
-## Make changes to the control
-
-If you make changes to your extension files, you need to compile the Typescript and create the *.vsix* file again (steps 4-7 in the "Package & Upload to the marketplace" section).
- 
-Instead of re-installing the extension, you can replace the extension with the new *.vsix* package.  Right-click the extension in the "Manage Extensions" page and click "Update".  You do not need to make changes to your XML file again.
-
-## Make API calls to the work item form service
-
-Reading data from VSTS/TFS server is a common REST API task for a work item control.  The VSS SDK provides a set of services for these REST APIs.  To use the service, import it into the typescript file.
+使用 [vss-web-extension-sdk](https://github.com/microsoft/vss-web-extension-sdk)Microsoft VSS Web 扩展 SDK 包，英文全称 Visual Studio Services Web Extension SDK
+，此 SDK 包括一个 JavaScript 库，该库提供与嵌入你的扩展插件的页面进行通信所需的 Api。
 
 ```typescript
 import * as VSSService from "VSS/Service";
@@ -48,18 +47,18 @@ import * as ExtensionContracts from "TFS/WorkItemTracking/ExtensionContracts";
 import * as Q from "q";
 ```
 
-## Commonly Needed
-| API                | Functions                   | Usage                                                                     |
+## API
+| API                | 函数                   | 用途                                                                     |
 | ------------------ | --------------------------- | ------------------------------------------------------------------------- |
-| VSSService         | VSS.getConfiguration()      | Returns the XML which defines the work item type.  Used in the sample to read the inputs of the control to describe its behavior.       |
-| WitService         | getService()                | Returns an instance of the server to make calls.                     |
-|                    | getFieldValue()             | Returns the field's current value.                                    |
-|                    | setFieldValue()             | Returns the field's current value using your control.       |
-|                    | getAllowedFieldValues()     | Returns the allowed values, or the items in a dropdown, of a field.                                    |
+| VSSService         | VSS.getConfiguration()      | 可以获取到相应的配置      |
+| WitService         | getService()                | 返回一个服务器实例                    |
+|                    | getFieldValue()             | 获取当前工作项字段的值值                                    |
+|                    | setFieldValue()             | 设置当前工作项字段的值       |
+|                    | getAllowedFieldValues()     | 获取字段的洋允许的值，即在配工作项模版配置时的下拉框中的选项列表                                    |
 
 
-### How to invoke methods on a service call
- Create an instance of the work item service to get information about the work item.  Use one of the service's functions to get information about the field.  This example asks for the allowed values of a field.
+### 使用示例 
+获取允许的值
 ```typescript
 WitService.WorkItemFormService.getservice().then(
     (service) => {
@@ -70,8 +69,7 @@ WitService.WorkItemFormService.getservice().then(
 )
 ```
 
-### Recommendation: use Q with service calls
-To wait on the response of multiple calls, you can use Q.  This example shows how to ask for the allowed values and the current value associated with a field using the Q.spread function.  You can make two parallel requests, and the code will not be executed until both services have returned a response.
+使用Q来处理回调, 当有多个回调时，可以使用Q.spread
 
 ```typescript
 WitService.WorkItemFormService.getService().then(
@@ -86,7 +84,12 @@ WitService.WorkItemFormService.getService().then(
 )
 ```
 
-### Structure ###
+抛出错误，阻止保存
+```
+
+```
+
+### 目录结构 ###
 
 ```
 /src                - Typescript code for this extension
