@@ -2,7 +2,7 @@
 
 # Azure DevOps 插件: Field Unique Control
 
-[[_TOC_]]
+[TOC]
 
 ## 一. 概述
  验证字段值的唯一性，如果相同类型的工作项使用了该值，将报错，当前工作项不能保存。
@@ -34,9 +34,7 @@ cd azure-devops-extension-custom-control-sample
    - 集合设置 > 扩展 > 浏览本地插件 > 管理本地扩展
    - 找到需要更新的插件，点击名称后的三个点 > 选择更新 > 浏览本地文件上传插件
 
-## 三. 
-## 使用 vss-web-extension-sdk 进行开发
-
+## 三. 开发
 使用 [vss-web-extension-sdk](https://github.com/microsoft/vss-web-extension-sdk)Microsoft VSS Web 扩展 SDK 包，英文全称 Visual Studio Services Web Extension SDK
 ，此 SDK 包括一个 JavaScript 库，该库提供与嵌入你的扩展插件的页面进行通信所需的 Api。
 
@@ -47,7 +45,7 @@ import * as ExtensionContracts from "TFS/WorkItemTracking/ExtensionContracts";
 import * as Q from "q";
 ```
 
-## API
+### 1. API
 | API                | 函数                   | 用途                                                                     |
 | ------------------ | --------------------------- | ------------------------------------------------------------------------- |
 | VSSService         | VSS.getConfiguration()      | 可以获取到相应的配置      |
@@ -57,8 +55,9 @@ import * as Q from "q";
 |                    | getAllowedFieldValues()     | 获取字段的洋允许的值，即在配工作项模版配置时的下拉框中的选项列表                                    |
 
 
-### 使用示例 
-获取允许的值
+### 2. 核心代码
+
+- 获取允许的值
 ```typescript
 WitService.WorkItemFormService.getservice().then(
     (service) => {
@@ -69,7 +68,7 @@ WitService.WorkItemFormService.getservice().then(
 )
 ```
 
-使用Q来处理回调, 当有多个回调时，可以使用Q.spread
+- 使用Q来处理回调, 当有多个回调时，可以使用Q.spread
 
 ```typescript
 WitService.WorkItemFormService.getService().then(
@@ -84,23 +83,50 @@ WitService.WorkItemFormService.getService().then(
 )
 ```
 
-抛出错误，阻止保存
+- 抛出错误，阻止保存 service.setError； 清除错误 service.clearError。
+```typescript
+WitService.WorkItemFormService.getService().then(
+            (service) => {
+                // 验证唯一性
+                this._validUniq(this._workItemId, value).then(isValid => {
+                    if (isValid == false) {
+                        service.setError(`${value} 已经在当前团队项目中被使用，请使用其他！`);
+                    } else {
+                        service.clearError();
+                        service.setFieldValue(this._fieldName, value).then(
+                            () => {
+                                this._update(value);
+                            }, this._handleError);
+                    }
+
+                });
+
+            },
+            this._handleError
+        );
+```
+
+- 调用wiql
+```typescript
+import VSS_Service = require("VSS/Service");
+import TFS_Wit_Client = require("TFS/WorkItemTracking/RestClient"); //TFS/WorkItemTracking/RestClient
+import TFS_Wit_Services = require("TFS/WorkItemTracking/Services");
+import TFS_Core_WebApi = require("TFS/Core/RestClient");
+
+var witClient = VSS_Service.getCollectionClient(TFS_Wit_Client.WorkItemTrackingHttpClient);
+const query = {
+            query: `SELECT [System.Id]
+                    FROM WorkItemLinks 
+                    WHERE ([System.Links.LinkType] = 'System.LinkTypes.Hierarchy-Forward') 
+                        AND (Target.[System.TeamProject] = @project 
+                        )  mode(Recursive, ReturnMatchingChildren)`
+        };
+let workItemQueryResult = await witClient.queryByWiql(query, project.name, null);
+```
+
+**目录结构**
 ```
 
 ```
 
-### 目录结构 ###
-
-```
-/src                - Typescript code for this extension
-/static/css         - Custom CSS assets for extension
-/static/images      - Image assets for extension and description
-/static/index.html  - Main entry point
-```
-
-#### Grunt ####
-
-Two basic `npm` tasks are defined:
-
-* `build` - Compiles TS files in `dist` folder
-* `publish` - Generates the ```.vsix``` file to publishes the extension to the marketplace using `tfx-cli`
+## 四. 打包发布命令讲解

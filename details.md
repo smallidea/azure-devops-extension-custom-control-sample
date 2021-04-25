@@ -5,7 +5,6 @@ azure devops 自定义控件的扩展
 npm install -g typescript
 npm install -g tfx-cli
 npm install -g rimraf
-npm install -g typings
 
 npm init -y
 
