@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "devops-unique-field-control",
     "publisher": "lean-soft",
-    "version": "1.0.41",
+    "version": "1.0.46",
     "name": "Unique Field Control",
     "description": "验证字段值的唯一性",
     "public": true,
