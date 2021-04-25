@@ -1,13 +1,18 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/smallidea/azure-devops-extension-custom-control-sample?logo=github&logoColor=white)](https://github.com/smallidea/azure-devops-extension-custom-control-sample) 
 
-# Azure DevOps 插件: Field Unique Control
-  * [一. 概述](#----)
-  * [二. 快速开始](#------)
-  * [三. 开发](#----)
-    + [1. API](#1-api)
-    + [2. 核心代码](#2-----)
-  * [四. 打包发布命令讲解](#----------)
 
+# Azure DevOps 插件: Field Unique Control
+
+- [一. 概述](#一-概述)
+- [二. 快速开始](#二-快速开始)
+- [三. 目录结构](#三-目录结构)
+- [四. 使用`vss-web-extension-sdk`](#四-使用vss-web-extension-sdk)         
+    - [API](#api)
+    - [核心代码](#核心代码)
+- [五. 用于打包、发布的命令](#五-用于打包发布的命令)
+
+
+---
 ## 一. 概述
  验证字段值的唯一性，如果相同类型的工作项使用了该值，将报错，当前工作项不能保存。
 
@@ -38,7 +43,34 @@ cd azure-devops-extension-custom-control-sample
    - 集合设置 > 扩展 > 浏览本地插件 > 管理本地扩展
    - 找到需要更新的插件，点击名称后的三个点 > 选择更新 > 浏览本地文件上传插件
 
-## 三. 开发
+## 三. 目录结构
+```
+├── CHANGELOG.md                            更新历史
+├── README.md                               
+├── details.md                              详细描述
+├── images                                  一些公用的图片
+├── src                                     源文件
+│   ├── common                              公共库
+│   │   ├── apiHelper.ts                    通过azure devops的api读取相关信息
+│   │   └── errorView.ts                    错误显示界面
+│   ├── static                              公用的资源文件
+│   │   ├── css
+│   │   └── images
+│   └── uniqueField                         主文件夹，单独放置的目的是方便一个工程发布多个插件
+│       ├── app.ts                          主文件
+│       ├── control.ts                      
+│       ├── index.html                      入口
+│       ├── model.ts                        
+│       ├── tsconfig.json                   typescript的配置文件
+│       └── view.ts
+├── package.json                            包的配置文件，npm包、自定义npm run命令
+├── tsconfig.json                           外层放置一个是避免调试的时候报错，因为tsconfig里面申明了vss-web-extension-sdk是一个types
+└── vss-extension-uniqueField.json          插件的配置文件
+
+```
+> 在bash下面使用tree命令获取目录海不错： tree -L 3 -I '*node_module*|out|dist|package-lock.json|*.png|*.css|license'
+
+## 四. 使用`vss-web-extension-sdk`
 使用 [vss-web-extension-sdk](https://github.com/microsoft/vss-web-extension-sdk)Microsoft VSS Web 扩展 SDK 包，英文全称 Visual Studio Services Web Extension SDK
 ，此 SDK 包括一个 JavaScript 库，该库提供与嵌入你的扩展插件的页面进行通信所需的 Api。
 
@@ -49,7 +81,7 @@ import * as ExtensionContracts from "TFS/WorkItemTracking/ExtensionContracts";
 import * as Q from "q";
 ```
 
-### 1. API
+### API
 | API                | 函数                   | 用途                                                                     |
 | ------------------ | --------------------------- | ------------------------------------------------------------------------- |
 | VSSService         | VSS.getConfiguration()      | 可以获取到相应的配置      |
@@ -59,7 +91,7 @@ import * as Q from "q";
 |                    | getAllowedFieldValues()     | 获取字段的允许的值，即在配工作项模版配置时的下拉框中的选项列表                                    |
 
 
-### 2. 核心代码
+### 核心代码
 
 - 获取允许的值
 ```typescript
@@ -128,9 +160,8 @@ const query = {
 let workItemQueryResult = await witClient.queryByWiql(query, project.name, null);
 ```
 
-**目录结构**
-```
-
-```
-
-## 四. 打包发布命令讲解
+## 五. 用于打包、发布的命令
+1. `clean`  删除运行过程中生成的文件
+2. `precompiled:uniqueField`    预编译，执行clean、tsc
+3. `package:prod:uniqueField`   打包成vsix文件，手动发布到tfs，通常这种比较适合生产环境
+4. `publish:test:uniqueField`   直接发布到tfs，通常适用于测试环境

@@ -3,11 +3,10 @@
   "version": "0.0.0-development",
   "author": "Jason Chen",
   "scripts": {
-    "build": "tsc",
     "clean": "rimraf ./dist ./out/*unique-field*.vsix ./out/*unique-field*.zip",
     "precompiled:uniqueField": "npm run clean && tsc --build ./src/uniqueField/tsconfig.json",
     "package:prod:uniqueField": "npm run precompiled:uniqueField && tfx extension create --rev-version --manifest-globs vss-extension-uniqueField.json --output-path ./out",
-    "publish:test:uniqueField": "npm run precompiled:uniqueField && tfx extension publish --rev-version --manifest-globs vss-extension-uniqueField.json --output-path out --service-url https://tfs.devopshub.cn/ --token qx5zvffhmzo6q3qbpgbt2xtqsvofk42tj62hcyjc4i4sewoxlauq"
+    "publish:test:uniqueField": "npm run precompiled:uniqueField && tfx extension publish --rev-version --manifest-globs vss-extension-uniqueField.json --output-path out --service-url https://tfs.devopshub.cn/ --token {token}"
   },
   "repository": {
     "type": "git",
