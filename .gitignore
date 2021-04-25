@@ -353,3 +353,4 @@ typings/
 dist/
 build/
 **/*.vsix
+out

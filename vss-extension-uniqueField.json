@@ -1,9 +1,9 @@
 {
     "manifestVersion": 1,
-    "id": "devops-unqiue-field-control",
+    "id": "devops-unique-field-control",
     "publisher": "lean-soft",
-    "version": "1.0.26",
-    "name": "Unqiue Control",
+    "version": "1.0.30",
+    "name": "Unique Field Control",
     "description": "验证字段值的唯一性",
     "public": true,
     "categories": [
@@ -14,7 +14,7 @@
         "vso.work_write"
     ],
     "icons": {
-        "default": "static/images/logo.jpg"
+        "default": "src/static/images/favicon-leansoftx.ico"
     },
     "links": {
         "learn": {
@@ -49,7 +49,7 @@
     ],
     "contributions": [
         {
-            "id": "unqiue-field-control",
+            "id": "unique-field-control",
             "type": "ms.vss-work-web.work-item-form-control",
             "description": "验证字段值的唯一性",
             "targets": [
@@ -57,7 +57,7 @@
             ],
             "properties": {
                 "name": "Markdown Text Control",
-                "uri": "unqiueField/index.html",
+                "uri": "dist/uniqueField/index.html",
                 "height": 50,
                 "inputs": [
                     {
@@ -80,21 +80,27 @@
     ],
     "files": [
         {
-            "path": "dist",
+            "path": "dist/",
+            "addressable": true
+        },
+        {
+            "path": "src/",
             "addressable": true
         },
         {
             "path": "node_modules/vss-web-extension-sdk/lib",
             "addressable": true,
-            "packagePath": "lib"
+            "packagePath": "dist/lib"
         },
         {
-            "path": "node_modules/azure-devops-extension-sdk/SDK.js",
-            "addressable": true
+            "path": "src/static",
+            "addressable": true,
+            "packagePath": "dist/static"
         },
         {
-            "path": "src",
-            "addressable": true
+            "path": "src/uniqueField/index.html",
+            "addressable": true,
+            "packagePath": "dist/uniqueField/index.html"
         }
     ]
 }

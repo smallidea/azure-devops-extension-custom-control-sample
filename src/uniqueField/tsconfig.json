@@ -1,19 +1,19 @@
 {
     "compilerOptions": {
         "target": "ES6",
-        "rootDir": "src/",
-        "outDir": "dist/",
+        //"rootDir": "src/",
+        "outDir": "../../dist/",
         //"removeComments": true,
         "sourceMap": true,
         "module": "amd",
         "moduleResolution": "node",
         "skipLibCheck": true,
         "types": [
-            "vss-web-extension-sdk",
-            "azure-devops-extension-sdk"
+            "vss-web-extension-sdk"
         ]
     },
     "include": [
-        "../src/**/*"
+        "../../src/uniqueField/*",
+        "../../common/*"
     ]
 }

@@ -4,9 +4,9 @@
   "author": "Ricardo Zambon",
   "scripts": {
     "build": "tsc",
-    "clean": "rimraf ./dist ./out/*uniqueField*.vsix",
-    "precompiled:uniqueField":"npm run clean && tsc --build .\\src\\uniqueField\\tsconfig.json",
-    "package:prod:uniqueField": "npm run precompiled:uniqueField && tfx extension create --rev-version --output-path ./out",
+    "clean": "rimraf ./dist ./out/*unique-field*.vsix ./out/*unique-field*.zip",
+    "precompiled:uniqueField": "npm run clean && tsc --build ./src/uniqueField/tsconfig.json",
+    "package:prod:uniqueField": "npm run precompiled:uniqueField && tfx extension create --rev-version --manifest-globs vss-extension-uniqueField.json --output-path ./out",
     "publish:test:uniqueField": "npm run precompiled:uniqueField && tfx extension publish --rev-version --manifest-globs vss-extension-uniqueField.json --output-path out --service-url https://tfs.devopshub.cn/ --token "
   },
   "repository": {
@@ -16,10 +16,7 @@
   "dependencies": {
     "@types/jquery": "^3.5.0",
     "@types/q": "^1.5.4",
-    "markdown-it": "^11.0.0",
-    "vss-web-extension-sdk": "^5.141.0",
-    "azure-devops-extension-api": "latest",
-    "azure-devops-extension-sdk": "latest"
+    "vss-web-extension-sdk": "^5.141.0"
   },
   "devDependencies": {
     "typescript": "^3.9.7",
