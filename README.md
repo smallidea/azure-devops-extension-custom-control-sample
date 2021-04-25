@@ -1,6 +1,6 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/smallidea/azure-devops-extension-custom-control-sample?logo=github&logoColor=white)](https://github.com/smallidea/azure-devops-extension-custom-control-sample) 
 
-- [Azure DevOps 插件: Field Unique Control](#azure-devops-----field-unique-control)
+# Azure DevOps 插件: Field Unique Control
   * [一. 概述](#----)
   * [二. 快速开始](#------)
   * [三. 开发](#----)
@@ -15,7 +15,7 @@
 
  - [如果使用web技术开发一个插件](https://docs.microsoft.com/en-us/azure/devops/extend/get-started/node?view=azure-devops)
 
-<img src='images/field_unique_1.png' />
+<img src='images/field_unique_1.png' style='border:1px; border-color: #CCC; width: 90%;' />
 
 ## 二. 快速开始 
 
@@ -113,7 +113,7 @@ WitService.WorkItemFormService.getService().then(
 - 调用wiql
 ```typescript
 import VSS_Service = require("VSS/Service");
-import TFS_Wit_Client = require("TFS/WorkItemTracking/RestClient"); //TFS/WorkItemTracking/RestClient
+import TFS_Wit_Client = require("TFS/WorkItemTracking/RestClient"); 
 import TFS_Wit_Services = require("TFS/WorkItemTracking/Services");
 import TFS_Core_WebApi = require("TFS/Core/RestClient");
 

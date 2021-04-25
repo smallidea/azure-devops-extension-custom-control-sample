@@ -14,7 +14,6 @@ function getWorkItemFormService() {
     return TFS_Wit_Services.WorkItemFormService.getService();
 }
 
-
 /**
  * 
  */
@@ -23,42 +22,6 @@ export class APIHelper {
 
     constructor() {
         //this._witRestClient = ADS.getClient(ADSWIT.WorkItemTrackingRestClient);
-    }
-
-    /**
-     * 
-     */
-    private testing() {
-
-        //This gets the correct project information
-        var witClient = VSS_Service.getCollectionClient(TFS_Wit_Client.WorkItemTrackingHttpClient);
-        var projectId = VSS.getWebContext().project.id;
-        var coreClient = TFS_Core_WebApi.getClient();
-        var allteams = [];
-
-        var query = {
-            query: "SELECT [System.Id] "
-                + "FROM WorkItem WHERE [System.WorkItemType] = 'Feature' "
-                + "AND [System.State] NOT IN ('Closed','Completed','Removed','Done')"
-        };
-
-
-        //This gets all of the teams in the project
-        coreClient.getTeams(projectId).then(function (teams) {
-
-            allteams = teams;
-
-        }).then(function () {
-
-            //This should get the open work items for a specific team in a specific project
-            //Instead, 'result' contains all open work items from all projects
-            witClient.queryByWiql(query, allteams[0].projectName, allteams[0].id).then(function (result) {
-
-                VSS.notifyLoadSucceeded();
-                console.log(result);
-
-            });
-        });
     }
 
     /**
