@@ -71,7 +71,7 @@ cd azure-devops-extension-custom-control-sample
 > 在bash下面使用tree命令获取目录还不错： tree -L 3 -I '*node_module*|out|dist|package-lock.json|*.png|*.css|license'
 
 ## 四. 使用`vss-web-extension-sdk`
-使用 [vss-web-extension-sdk](https://github.com/microsoft/vss-web-extension-sdk)Microsoft VSS Web 扩展 SDK 包，英文全称 Visual Studio Services Web Extension SDK
+使用 Microsoft VSS Web 扩展 SDK 包，[vss-web-extension-sdk](https://github.com/microsoft/vss-web-extension-sdk) 英文全称 Visual Studio Services Web Extension SDK
 ，此 SDK 包括一个 JavaScript 库，该库提供与嵌入你的扩展插件的页面进行通信所需的 Api。
 
 ```typescript
