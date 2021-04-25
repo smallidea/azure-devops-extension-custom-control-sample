@@ -25,7 +25,7 @@ export class ErrorView {
         help.text("See ");
 
         var a = $("<a> </a>");
-        a.attr("href", "https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx");
+        a.attr("href", "https://azure.microsoft.com/zh-cn/services/devops/");
         a.attr("target", "_blank");
         a.text("Documentation.");
 

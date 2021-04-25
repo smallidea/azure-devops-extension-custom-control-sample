@@ -9,7 +9,7 @@
 	<script src="../lib/VSS.SDK.min.js"></script>
     
 	<title>Hit Count Control</title>
-	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<link rel="stylesheet" href="../static/css/style.css" type="text/css" />
 </head>
 
 <body style="height:100%">
@@ -23,7 +23,7 @@
         });
 
         // Load main entry point for extension 
-        VSS.require(["dist/app"], function () {
+        VSS.require(["app"], function () {
             // loading succeeded
             VSS.notifyLoadSucceeded();
         });

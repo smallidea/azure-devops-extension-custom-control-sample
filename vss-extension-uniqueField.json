@@ -1,10 +1,10 @@
 {
     "manifestVersion": 1,
-    "id": "devops-markdown-text-control",
-    "publisher": "Ricardo-Zambon",
+    "id": "devops-unqiue-field-control",
+    "publisher": "lean-soft",
     "version": "1.0.26",
-    "name": "Markdown Text Control",
-    "description": "Extension to show text field control and markdown in same row",
+    "name": "Unqiue Control",
+    "description": "验证字段值的唯一性",
     "public": true,
     "categories": [
         "Azure Boards"
@@ -14,20 +14,20 @@
         "vso.work_write"
     ],
     "icons": {
-        "default": "static/images/MarketplaceLogo.jpg"
+        "default": "static/images/logo.jpg"
     },
     "links": {
         "learn": {
-            "uri": "https://github.com/RicardoZambon/devops-markdown-text-control/blob/master/README.md"
+            "uri": "https://github.com/smallidea/azure-devops-extension-custom-control-sample/blob/main/README.md"
         },
         "support": {
-            "uri": "https://github.com/RicardoZambon/devops-markdown-text-control"
+            "uri": "https://github.com/smallidea/azure-devops-extension-custom-control-sample"
         },
         "repository": {
-            "uri": "https://github.com/RicardoZambon/devops-markdown-text-control"
+            "uri": "https://github.com/smallidea/azure-devops-extension-custom-control-sample"
         },
         "issues": {
-            "uri": "https://github.com/RicardoZambon/devops-markdown-text-control/issues"
+            "uri": "https://github.com/smallidea/azure-devops-extension-custom-control-sample/issues"
         }
     },
     "targets": [
@@ -49,15 +49,15 @@
     ],
     "contributions": [
         {
-            "id": "markdown-form-control",
+            "id": "unqiue-field-control",
             "type": "ms.vss-work-web.work-item-form-control",
-            "description": "A markdown text control for work item form.",
+            "description": "验证字段值的唯一性",
             "targets": [
                 "ms.vss-work-web.work-item-form"
             ],
             "properties": {
                 "name": "Markdown Text Control",
-                "uri": "static/index.html",
+                "uri": "unqiueField/index.html",
                 "height": 50,
                 "inputs": [
                     {
@@ -84,20 +84,12 @@
             "addressable": true
         },
         {
-            "path": "static",
-            "addressable": true
-        },
-        {
             "path": "node_modules/vss-web-extension-sdk/lib",
             "addressable": true,
             "packagePath": "lib"
         },
         {
             "path": "node_modules/azure-devops-extension-sdk/SDK.js",
-            "addressable": true
-        },
-        {
-            "path": "node_modules/azure-devops-extension-api",
             "addressable": true
         },
         {

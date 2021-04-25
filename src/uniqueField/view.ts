@@ -1,7 +1,6 @@
 // import { Markdown } from './markdown';
 import { WorkItemFormService } from "TFS/WorkItemTracking/Services";
 import { Model } from "./model";
-import * as MarkdownIt from "markdown-it";
 import { WorkItemField } from 'TFS/WorkItemTracking/Contracts';
 
 export class View {

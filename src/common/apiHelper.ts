@@ -25,20 +25,9 @@ export class APIHelper {
         //this._witRestClient = ADS.getClient(ADSWIT.WorkItemTrackingRestClient);
     }
 
-
     /**
      * 
-     * @returns 
      */
-    /*   public async getCurrentProject(): Promise<IProjectInfo> {
-          const projectService = await SDK.getService<IProjectPageService>(CommonServiceIds.ProjectPageService);
-          const project = await projectService.getProject();
-          if (!project) {
-              throw new Error("No project context found");
-          }
-          return project;
-      } */
-
     private testing() {
 
         //This gets the correct project information

@@ -5,9 +5,9 @@
 import * as WitService from "TFS/WorkItemTracking/Services";
 import { Model } from "./model";
 import { View } from "./view";
-import { ErrorView } from "./errorView";
+import { ErrorView } from "../common/errorView";
 import * as Q from "q";
-import { APIHelper } from "./common/apiHelper"
+import { APIHelper } from "../common/apiHelper"
 
 export class Controller {
     private _fieldName = "";
