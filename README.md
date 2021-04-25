@@ -1,8 +1,12 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/smallidea/azure-devops-extension-custom-control-sample?logo=github&logoColor=white)](https://github.com/smallidea/azure-devops-extension-custom-control-sample) 
 
-# Azure DevOps 插件: Field Unique Control
-
-[TOC]
+- [Azure DevOps 插件: Field Unique Control](#azure-devops-----field-unique-control)
+  * [一. 概述](#----)
+  * [二. 快速开始](#------)
+  * [三. 开发](#----)
+    + [1. API](#1-api)
+    + [2. 核心代码](#2-----)
+  * [四. 打包发布命令讲解](#----------)
 
 ## 一. 概述
  验证字段值的唯一性，如果相同类型的工作项使用了该值，将报错，当前工作项不能保存。
