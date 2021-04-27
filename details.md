@@ -35,6 +35,9 @@ npm install antd --save
 }
 ```
 
+vss-extension.json文件配置
+https://pkg.go.dev/github.com/microsoft/azure-devops-go-api/azuredevops/forminput
+
 添加排除文件
 ``` .gitignore
 .ionide/
