@@ -165,3 +165,6 @@ let workItemQueryResult = await witClient.queryByWiql(query, project.name, null)
 2. `precompiled:uniqueField`    预编译，执行clean、tsc
 3. `package:prod:uniqueField`   打包成vsix文件，手动发布到tfs，通常这种比较适合生产环境
 4. `publish:test:uniqueField`   直接发布到tfs，通常适用于测试环境
+
+## 六. 调试
+TODO
