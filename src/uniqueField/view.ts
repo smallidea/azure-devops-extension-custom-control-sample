@@ -37,7 +37,7 @@ export class View {
         field.val(this.currentValue);
         field.attr("autocomplete", this.currentValue);
         field.attr("aria-valuenow", this.currentValue);
-        field.on("keyup", (evt: JQueryKeyEventObject) => {
+        field.on("change", (evt: JQueryKeyEventObject) => {
             this._inputChanged();
         }).on('focus', (evt: JQueryKeyEventObject) => {
             this._gotFocus();
